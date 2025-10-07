@@ -4,22 +4,6 @@ on:
   push:
     branches:
       - '*'
-  workflow_dispatch:
-    inputs:
-      vps_name:
-        description: 'VPS Name'
-        required: false
-        default: ''
-      vps_size:
-        description: 'VPS Size'
-        required: false
-        default: 's-2vcpu-2gb'
-        type: choice
-        options:
-          - 's-1vcpu-1gb'
-          - 's-2vcpu-2gb'
-          - 's-2vcpu-4gb'
-          - 's-4vcpu-8gb'
 
 jobs:
   deploy:
@@ -30,7 +14,7 @@ jobs:
       uses: escopecz/mautic-do-action@0.0.0
       with:
         vps-name: ${{ github.event.inputs.vps_name || vars.VPS_NAME || format('mautic-{0}', github.ref_name) }}
-        vps-size: ${{ github.event.inputs.vps_size || 's-2vcpu-2gb' }}
+        vps-size: ${{ github.event.inputs.vps_size || 's-1vcpu-1gb' }}
         vps-region: 'nyc1'
         domain: ${{ vars.DOMAIN || '' }}
         email: ${{ vars.EMAIL_ADDRESS }}
