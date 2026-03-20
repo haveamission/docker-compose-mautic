@@ -19,6 +19,7 @@ jobs:
           vps-region: "nyc1"
           domain: ${{ vars.DOMAIN || '' }}
           email: ${{ vars.EMAIL_ADDRESS }}
+          mautic-version: "7.0.1-apache"
           mautic-password: ${{ secrets.MAUTIC_PASSWORD }}
           mysql-host: ${{ secrets.MYSQL_HOST }}
           mysql-port: "25060"
