@@ -29,3 +29,5 @@ jobs:
           digitalocean-token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           mautic-port: "8001"
+          plugins: |
+            https://github.com/haveamission/MauticDirectPushBundle/archive/refs/heads/main.zip?directory=MauticDirectPushBundle
