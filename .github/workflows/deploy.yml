@@ -3,7 +3,7 @@ name: Deploy Mautic to DigitalOcean
 on:
   push:
     branches:
-      - "*"
+      - main
   workflow_dispatch:
 
 jobs:
@@ -14,12 +14,12 @@ jobs:
       - name: Deploy Mautic
         uses: haveamission/mautic-do-action@main
         with:
-          vps-name: ${{ github.event.inputs.vps_name || vars.VPS_NAME || format('mautic-{0}', github.ref_name) }}
+          vps-name: ${{ vars.VPS_NAME || 'mautic-main' }}
           vps-size: "s-1vcpu-1gb"
           vps-region: "nyc1"
           domain: ${{ vars.DOMAIN || '' }}
           email: ${{ vars.EMAIL_ADDRESS }}
-          mautic-version: "6.0.8-apache"
+          mautic-version: "7.2.3-apache"
           mautic-password: ${{ secrets.MAUTIC_PASSWORD }}
           mysql-host: ${{ secrets.MYSQL_HOST }}
           mysql-port: "25060"
